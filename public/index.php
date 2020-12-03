@@ -1,5 +1,11 @@
 <?php
 
+include_once __DIR__ . '/../vendor/autoload.php';
+
+
+
 //rookie first day
 define('BASE_PATH', dirname(__DIR__));
-echo 'test';
+
+//$tools::debug();
+\Rooike\Tools::debug();

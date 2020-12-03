@@ -1,0 +1,32 @@
+{
+  "name": "gsmao/rookie",
+  "authors": [
+    {
+      "name": "gsmao",
+      "email": "18709263914@163.com"
+    }
+  ],
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.org",
+      "allow_ssl_downgrade": true
+    }
+  },
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Rooike\\": [
+        "./apps/http/"
+      ]
+    },
+    "files": [
+    ]
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
