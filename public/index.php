@@ -7,5 +7,5 @@ include_once __DIR__ . '/../vendor/autoload.php';
 //rookie first day
 define('BASE_PATH', dirname(__DIR__));
 
-//$tools::debug();
-\Rooike\Tools::debug();
+$solution = new \Rooike\Solution();
+echo $solution->predictPartyVictory('RDRDRDD');
