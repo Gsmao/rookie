@@ -13,15 +13,17 @@
 ###### 六级标题 #####
 
 
-1. 形式一
+形式一
 + a
 + b
 + c
-2.形式二
+
+形式二  
 - d
 - e
 - f
-2.形式三
+
+形式三
 * g
 * h
 * i
@@ -60,10 +62,10 @@
 >>>>>> 六级引用
 
 
-1. 少量代码，单行使用，直接用\`包裹起来就行了
-` shaoliangdaima,danhangshiyong `
+1.少量代码，单行使用，直接用\`包裹起来就行了  
+` shaoliangdaima,danhangshiyong `  
 
-2.大量代码，需要多行使用，用\`\`\`包裹起来
+2.大量代码，需要多行使用，用\`\`\`包裹起来  
     ```
         daliangdaima,xuyaoduohangshiyong
         daliangdaima,xuyaoduohangshiyong
