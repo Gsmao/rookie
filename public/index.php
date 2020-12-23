@@ -50,4 +50,4 @@ function compareSalary()
     print_r($return);
 }
 
-#compareSalary();
+#compareSalary();g
