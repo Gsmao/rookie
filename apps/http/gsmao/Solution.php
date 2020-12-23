@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Rooike;
+namespace Rooike\gsmao;
 
 
 class Solution
@@ -55,5 +55,10 @@ class Solution
             $senate = $tmp;
         } while (!empty($senate));
         return 'error';
+    }
+
+    public function test()
+    {
+        echo 123;
     }
 }
