@@ -24,9 +24,9 @@
 - public 
   - index.php 这个主要用来调试代码
  
-- review 这个是复习模块
+- 笔记模块
     - Common 公共笔记整理文件
     - Gsmao 毛港胜目录
-    - Mxu 徐明整理牡蛎
+    - Mxu 徐明目录
     - Test 调试用的，md基本操作文档
  
