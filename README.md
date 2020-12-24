@@ -1,6 +1,15 @@
-# rookie
-> 这个是跑测试代码用的, 仅限于PHP开发  
-> 执行命令：composer dump-autoload加载类    
+# 项目名- rookie
+> 开发须知：    
+> 执行命令：composer dump-autoload加载类  这个是跑测试代码用的, 仅限于PHP开发
+> 听说一个私有仓库好像只能支持3名协作开发人员？  
+
+> 清除本地缓存：(账号信息等都会清掉)
+>>git rm -r --cached .
+>>git add .
+>>git commit -m "update .gitignore"
+
+# 合作github身份令牌
+> 这个找我要。。。不好写在readme里面
 
 # 人员名单
 > users = 1, gsmao - 毛港胜  
