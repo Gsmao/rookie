@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Rooike;
+namespace Rooike\gsmao;
 
 /**
  * 薪资计算
@@ -15,11 +15,67 @@ class Salary {
     protected $extraPay;//额外加班费用
     protected $percent;//缴纳比率（默认按照12%交社保公积金）
 
-    public function __construct($salary, $base = 0, $extraPayRate = 0, $percent = 0) {
+    public function __construct($salary = 0, $base = 0, $extraPayRate = 0, $percent = 0) {
         $this->salary = $salary;
         $this->base = $base ?: $salary;
         $this->extraPay = $salary * $extraPayRate;
         $this->percent = $percent ?: 0.12;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSalary() {
+        return $this->salary;
+    }
+
+    /**
+     * @param mixed $salary
+     */
+    public function setSalary($salary) {
+        $this->salary = $salary;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBase() {
+        return $this->base;
+    }
+
+    /**
+     * @param mixed $base
+     */
+    public function setBase($base) {
+        $this->base = $base;
+    }
+
+    /**
+     * @return float|int
+     */
+    public function getExtraPay() {
+        return $this->extraPay;
+    }
+
+    /**
+     * @param float|int $extraPay
+     */
+    public function setExtraPay($extraPay) {
+        $this->extraPay = $extraPay;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPercent() {
+        return $this->percent;
+    }
+
+    /**
+     * @param float $percent
+     */
+    public function setPercent($percent) {
+        $this->percent = $percent;
     }
 
     public function getSalaryDetail()
