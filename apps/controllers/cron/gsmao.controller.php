@@ -18,6 +18,9 @@ class Cron_Gsmao_Controller {
         }
     }
 
+    /**
+     * 薪资对比
+     */
     public function compare() {
         $salary = $_REQUEST['now'] ?: 18000;
         $aidSalary = $_REQUEST['aid'] ?: 24000;
@@ -76,6 +79,9 @@ class Cron_Gsmao_Controller {
         return $earning + $deposit * $monthRate * 12;
     }
 
+    /**
+     * 财富密码
+     */
     function saveMoney() {
         $saveYear = 1;
         $allDeposit = 0;//无理财总存款
