@@ -5,17 +5,11 @@ use Rooike\gsmao\Salary;
 
 class Cron_Gsmao_Controller {
 
+    /**
+     * 命令行 php public/index.php cron/gsmao/test
+     */
     public function testAction() {
         $this->saveMoney();
-
-        $save = 1000000;
-        $i = 1;
-        while ($i < 3) {
-            $tmp = floor($this->moneyManage($save, 2000, 0.0075));
-            $save += $tmp;
-            echo ("第 $i 年可攒钱：$save 理财收入:{$tmp}") . "\n";
-            $i++;
-        }
     }
 
     /**
@@ -59,24 +53,20 @@ class Cron_Gsmao_Controller {
     }
 
     /**
-     * @param int $deposit -存款
      * @param int $monthPut -每月投入金额
      * @param float $monthRate -每月收益率
      * @return float|int - 总收入
      */
-    function moneyManage($deposit, $monthPut = 8000, $monthRate = 0.01) {
+    function moneyManage($monthPut = 8000, $monthRate = 0.01) {
         $earning = 0;
         $yearMonth = 12;
         while ($yearMonth > 0) {
-            //第一个月的收入是   12 * 0.05 * 8000
-            //最后一个月的收入是  1 * 0.05 * 8000
+            //第一个月的收入是   12 * $monthRate * 8000
+            //最后一个月的收入是  1 * $monthRate * 8000
             $earning += ($yearMonth * $monthRate) * $monthPut;
-
             $yearMonth--;
         }
-        //$earning 每月投入理财收入
-        //$deposit * $monthRate * 12 = 存款理财收入
-        return $earning + $deposit * $monthRate * 12;
+        return $earning;
     }
 
     /**
@@ -88,14 +78,21 @@ class Cron_Gsmao_Controller {
         $saveMoney = 0;//理财总存款
         $firstYearPut = 8000;//第一年每月能攒下来去理财的钱
         $add = 1000;//每年涨薪之后可多攒下来去理财的钱
+
         while ($saveYear < 5) {
             $monthPut = $firstYearPut + $add * $saveYear;//每月投入理财金额
 
-            $deposit = $saveMoney;//存款
-            $manage = $this->moneyManage($deposit, $monthPut, 0.008);//存款理财收入 + 月投理财收入
-            $saveMoney += floor($manage + $monthPut * 12 + (20000 + $add) * 2);//存款 = 理财收入 + 投入本金 + 年终奖
+            $manage = $this->moneyManage($monthPut, 0.01);//存款理财收入 + 月投理财收入
 
-            $allDeposit += $monthPut * 12 + 30000;
+            $saveMoney += floor(
+                $manage + //理财收入
+                $monthPut * 12 + //今年投入本金
+                $allDeposit * 0.1 + //历史投入收入
+                (16000 + $add) * 2)//年终奖
+            ;
+
+            $allDeposit += $monthPut * 12 + (16000 + $add) * 2;
+
             $diff = $saveMoney - $allDeposit;
             echo ("第 $saveYear 年可攒钱：$saveMoney({$allDeposit}) 理财收入:{$diff}") . "\n";
             $saveYear++;
