@@ -9,14 +9,14 @@ class Cron_Gsmao_Controller {
      * 命令行 php public/index.php cron/gsmao/test
      */
     public function testAction() {
-        $this->saveMoney();
+        $this->compare();
     }
 
     /**
      * 薪资对比
      */
     public function compare() {
-        $salary = $_REQUEST['now'] ?: 18000;
+        $salary = $_REQUEST['now'] ?: 19000;
         $aidSalary = $_REQUEST['aid'] ?: 24000;
         $nowSalary = new Salary($salary, 14000 * 0.7, 0.18, 0.07);
         $otherSalary = new Salary($aidSalary);
