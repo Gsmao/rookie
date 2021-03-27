@@ -17,7 +17,7 @@ class Cron_Gsmao_Controller {
      */
     public function compare() {
         $salary = $_REQUEST['now'] ?: 19000;
-        $aidSalary = $_REQUEST['aid'] ?: 24000;
+        $aidSalary = $_REQUEST['aid'] ?: 25000;
         $nowSalary = new Salary($salary, 14000 * 0.7, 0.18, 0.07);
         $otherSalary = new Salary($aidSalary);
         $nowDetail = $nowSalary->getSalaryDetail();
