@@ -57,7 +57,7 @@ class Cron_Gsmao_Controller {
      * @param float $monthRate -每月收益率
      * @return float|int - 总收入
      */
-    function moneyManage($monthPut = 8000, $monthRate = 0.01) {
+    public function moneyManage($monthPut = 8000, $monthRate = 0.01) {
         $earning = 0;
         $yearMonth = 12;
         while ($yearMonth > 0) {
@@ -72,7 +72,7 @@ class Cron_Gsmao_Controller {
     /**
      * 财富密码
      */
-    function saveMoney() {
+    public function saveMoney() {
         $saveYear = 1;
         $allDeposit = 0;//无理财总存款
         $saveMoney = 0;//理财总存款

@@ -7,11 +7,12 @@ namespace Rooike\gsmao;
 class Review {
 
     /**
+     * 快排
      * @param $array
      * @param $left
      * @param $right
      */
-    public function sort(&$array, $left, $right) {
+    public function quickSort(&$array, $left, $right) {
         /**
          * 1：选择基准数
          * 2：采取分治思想，将数据分类，其中一边都小于基准数，其中一遍都大于基准数
@@ -46,8 +47,50 @@ class Review {
         //最后将$tmp填充到
         $array[$left] = $tmp;
 
-        $this->sort($array, $i, $left - 1); // 递归调用
-        $this->sort($array, $left + 1, $j);
+        $this->quickSort($array, $i, $left - 1); // 递归调用
+        $this->quickSort($array, $left + 1, $j);
+    }
+
+    public function mergeSort($arr)
+    {
+        $len = count($arr);
+        if ($len < 2) {
+            return $arr;
+        }
+        $middle = floor($len / 2);
+        $left = array_slice($arr, 0, $middle);
+        $right = array_slice($arr, $middle);
+        return $this->merge($this->mergeSort($left), $this->mergeSort($right));
+    }
+
+    /**
+     * 合并两个有序数组为有序
+     * @param $left
+     * @param $right
+     * @return array
+     */
+    public function merge($left, $right)
+    {
+        $result = [];
+
+        //先
+        while (count($left) > 0 && count($right) > 0) {
+            if ($left[0] <= $right[0]) {
+                $result[] = array_shift($left);
+            } else {
+                $result[] = array_shift($right);
+            }
+        }
+
+        while (count($left)) {
+            $result[] = array_shift($left);
+        }
+
+        while (count($right)) {
+            $result[] = array_shift($right);
+        }
+
+        return $result;
     }
 
 }
