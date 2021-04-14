@@ -9,7 +9,11 @@ class Cron_Gsmao_Controller {
      * 命令行 php public/index.php cron/gsmao/test
      */
     public function testAction() {
-        $this->compare();
+//        $this->compare();
+        $a = ["a","a","b","b","c","c","c"];
+        $b = $this->compress($a);
+        var_dump($a);
+        var_dump($b);
     }
 
     /**
@@ -96,6 +100,57 @@ class Cron_Gsmao_Controller {
             $diff = $saveMoney - $allDeposit;
             echo ("第 $saveYear 年可攒钱：$saveMoney({$allDeposit}) 理财收入:{$diff}") . "\n";
             $saveYear++;
+        }
+    }
+
+    public function compress(&$chars) {
+        $len = count($chars);
+
+        $replace = false;
+        $replaceCount = 1;
+        $last_char = $chars[0];
+
+        $tmp = [];
+        for ($i = 1; $i < $len; $i++) {
+            //判断重复将重复值++
+            if ($chars[$i] === $last_char) {
+                $replace = true;
+                $replaceCount++;
+            } else {
+                $replace = false;
+            }
+
+            if (!$replace && $replaceCount > 1) {
+                $tmp[] = $last_char;
+                $this->reverse($tmp, $replaceCount);
+
+                $replaceCount = 1;
+            }
+            $last_char = $chars[$i];
+        }
+
+        if ($replace && $replaceCount > 1) {
+            $tmp[] = $last_char;
+            $this->reverse($tmp, $replaceCount);
+        }
+        var_dump($tmp);
+
+        $chars = $tmp;
+        return count($chars);
+    }
+
+    public function reverse(&$tmp, $replaceCount)
+    {
+        $tmpArr = [];
+        while ($replaceCount) {
+            $tmpArr[] = $replaceCount % 10;
+            $replaceCount = (int)($replaceCount / 10);
+        }
+        //逆向拼接count
+        $j = count($tmpArr) - 1;
+        while ($j >= 0) {
+            $tmp[] = $tmpArr[$j];
+            $j--;
         }
     }
 }
