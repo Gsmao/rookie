@@ -9,11 +9,7 @@ class Cron_Gsmao_Controller {
      * 命令行 php public/index.php cron/gsmao/test
      */
     public function testAction() {
-//        $this->compare();
-        $a = ["a","a","b","b","c","c","c"];
-        $b = $this->compress($a);
-        var_dump($a);
-        var_dump($b);
+        var_dump('test');
     }
 
     /**
